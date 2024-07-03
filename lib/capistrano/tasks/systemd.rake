@@ -187,7 +187,7 @@ namespace :sidekiq do
     config = fetch(:sidekiq_config)
     return unless config
 
-    process_config = config[process]
+    process_config = config[process - 1]
     if process_config.nil?
       backend.error(
         "No configuration for Process ##{process} found. "\
