@@ -30,7 +30,11 @@ namespace :sidekiq do
           git_plugin.quiet_sidekiq(process)
         end
 
+
+
         git_plugin.process_block do |process|
+          git_plugin.systemctl_command(:stop, process: process)
+
           start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
           running = nil
 
